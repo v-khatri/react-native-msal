@@ -6,6 +6,7 @@ export interface MSALConfiguration {
     authority?: string;
     knownAuthorities?: string[];
     redirectUri?: string;
+    isB2C: boolean;
   };
   /**
    * @platform web

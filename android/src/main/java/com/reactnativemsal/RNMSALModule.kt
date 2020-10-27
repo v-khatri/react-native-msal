@@ -16,7 +16,11 @@ class RNMSALModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
 
   @ReactMethod
   fun createPublicClientApplication(params: ReadableMap) {
-    val inputStream = reactApplicationContext.assets.open("msal_config.json")
+    var fileToOpen = "msal_config.json"
+    if(params.hasKey("isB2C") && params.getBoolean("isB2C")){
+      fileToOpen = "msal_b2c_config.json"
+    }
+    val inputStream = reactApplicationContext.assets.open(fileToOpen)
     val file = File.createTempFile("RNMSAL_msal_config", ".tmp")
     file.deleteOnExit()
     FileUtils.copyInputStreamToFile(inputStream, file)
