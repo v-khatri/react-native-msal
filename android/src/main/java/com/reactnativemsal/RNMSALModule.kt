@@ -1,5 +1,6 @@
 package com.reactnativemsal
 
+import android.util.Log
 import android.util.Pair
 import com.facebook.react.bridge.*
 import com.microsoft.identity.client.*
@@ -20,6 +21,8 @@ class RNMSALModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
     if(params.hasKey("isB2C") && params.getBoolean("isB2C")){
       fileToOpen = "msal_b2c_config.json"
     }
+    Log.i("RNMSALModule", fileToOpen)
+    Log.i("RNMSALModule", params.toString())
     val inputStream = reactApplicationContext.assets.open(fileToOpen)
     val file = File.createTempFile("RNMSAL_msal_config", ".tmp")
     file.deleteOnExit()
