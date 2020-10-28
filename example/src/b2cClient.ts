@@ -20,7 +20,7 @@ export type B2CConfiguration = Omit<MSALConfiguration, 'auth'> & {
     authorityBase: string;
     policies: B2CPolicies;
     redirectUri?: string;
-    isB2C:string;
+    isB2C?:boolean;
   };
 };
 export type B2CSignInParams = Omit<MSALInteractiveParams, 'authority'>;
