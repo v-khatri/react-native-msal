@@ -22,7 +22,7 @@ class RNMSALModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
       fileToOpen = "msal_b2c_config.json"
     }
     Log.i("RNMSALModule", fileToOpen)
-    Log.i("RNMSALModule", params.toString())
+    Log.i("RNMSALModule", params.getMap("auth").toString())
     val inputStream = reactApplicationContext.assets.open(fileToOpen)
     val file = File.createTempFile("RNMSAL_msal_config", ".tmp")
     file.deleteOnExit()
