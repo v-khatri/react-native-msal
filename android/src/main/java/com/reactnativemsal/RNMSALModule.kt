@@ -18,7 +18,11 @@ class RNMSALModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
   @ReactMethod
   fun createPublicClientApplication(params: ReadableMap) {
     var fileToOpen = "msal_config.json"
-    if(params.hasKey("isB2C") && params.getBoolean("isB2C")){
+    var isB2C = false
+    if(params.getMap("auth") != null && params.getMap("auth")!!.hasKey("isB2C")){
+      isB2C = params.getMap("auth")!!.getBoolean("isB2C")
+    }
+    if(isB2C){
       fileToOpen = "msal_b2c_config.json"
     }
     Log.i("RNMSALModule", fileToOpen)
