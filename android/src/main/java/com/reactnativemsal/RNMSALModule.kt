@@ -76,6 +76,7 @@ class RNMSALModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
       acquireTokenParameters.withCallback(getAuthInteractiveCallback(promise))
       publicClientApplication.acquireToken(acquireTokenParameters.build())
     } catch (e: Exception) {
+      e.printStackTrace()
       promise.reject(e)
     }
   }
@@ -91,6 +92,7 @@ class RNMSALModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
       }
 
       override fun onError(exception: MsalException) {
+        exception.printStackTrace()
         promise.reject(exception)
       }
     }
