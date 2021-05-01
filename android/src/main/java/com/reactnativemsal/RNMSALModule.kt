@@ -93,6 +93,10 @@ class RNMSALModule(reactContext: ReactApplicationContext) : ReactContextBaseJava
 
       override fun onError(exception: MsalException) {
         exception.printStackTrace()
+        if(exception is MsalDeclinedScopeException){
+          Log.i("RNMSALModule",
+            "Decliend scopes: ${ex.getDeclinedScopes()}, Granted scopes ${ex.getGrantedScopes()}")
+        }
         promise.reject(exception)
       }
     }
